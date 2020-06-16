@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
   # master configuration, must be provisioned after nodes.
   #
   config.vm.define "master" do |node|
-    resources(node, 2, 4096)
+    resources(node, 2, 8192)
 
     node.vm.network "private_network", ip: "192.168.253.100"
     node.vm.hostname = "master"
