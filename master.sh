@@ -18,7 +18,7 @@ chmod 700 $HOME/.ssh/id_ed25519
 
 function setup_ansible {
 export PATH_ORIGIN=`pwd`
-if [! -f openshift-ansible ]; then
+if [ ! -f openshift-ansible ]; then
 git clone https://github.com/openshift/openshift-ansible.git
 fi
 cd openshift-ansible && git fetch && git checkout release-3.11
