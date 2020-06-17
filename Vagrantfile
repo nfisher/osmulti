@@ -32,6 +32,18 @@ Vagrant.configure("2") do |config|
     node.vm.provision "shell", path: "provision.sh", args: ["192.168.253.102"]
   end
 
+  #
+  # infra01 configuration
+  #
+  config.vm.define "infra01" do |node|
+    resources(node, 2, 4096)
+
+    node.vm.network "private_network", ip: "192.168.253.103"
+    node.vm.hostname = "infra01"
+
+    node.vm.provision :shell, inline: "hostnamectl set-hostname infra01.192.168.253.103.nip.io"
+    node.vm.provision "shell", path: "provision.sh", args: ["192.168.253.103"]
+  end
 
   #
   # master configuration, must be provisioned after nodes.
